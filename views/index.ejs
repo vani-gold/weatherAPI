@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weather app</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <form class="article one" action="/" method="POST">
+        <input type="text" name="city">
+      </form>
+    
+    </header>
+
+    <main>
+      <% if(city !== null) {%>
+        <div class="center_image">
+          <img  src="http://openweathermap.org/img/w/<%= icon %>.png" alt="">
+        </div>
+        <!-- <h1 class="center text"><%= icon %></h1> -->
+        <h1 class="center text"><%= city %></h1>
+        <h1 class="center text"><%= temp %></h1>
+        <h1 class="center text"><%= des %></h1>
+        <% } %>
+
+      <div class="article one">
+        <h3 id="sun">🌧Tomorrow</h3>
+
+        <% if(temp !== null) {%>
+        <p><%= temp %></p>
+        <% } %>
+      </div>
+   
+
+      <div class="article two">
+        <h3>🌥 Saturday</h3>
+        <p>15° / <strong>17°</strong></p>
+      </div>
+
+      <div class="article three">
+        <h3>☀️ Sunday</h3>
+        <p>25° / <strong>28°</strong></p>
+      </div>
+
+      <button>Change city</button>
+      <p class="center footer">Coded by Esibe Vanessa</p>
+    </main>
+
+    <script>
+      function tellUs() {
+        let name = prompt("what City are you in?");
+        let tem = prompt("what Temperature is it?");
+        let text = document.querySelector(".text");
+        text.innerHTML = `It is Currently ${tem}°C in ${name}`;
+        let icon = document.querySelector(".icon");
+
+        if (tem >= 0) {
+          icon.innerHTML = "☺";
+        } else {
+          icon.innerHTML = "☹";
+        }
+      }
+
+      let btn = document.querySelector("button");
+      btn.addEventListener("click", tellUs);
+    </script>
+  </body>
+</html>
